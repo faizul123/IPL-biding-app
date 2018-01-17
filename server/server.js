@@ -1,18 +1,20 @@
 const express = require('express');
 const path = require('path');
-
+const body_parser = require('body-parser');
+const connection = require('./connection');
+const userController = require('./controller/UserController');
 const app = express();
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Put all API endpoints under '/api'
-app.get('/api/hello/:name', (req, res) => {
+//set the body parser
+app.use(body_parser.urlencoded({extended:true}));
+app.use(body_parser.json());
 
-  
-  res.json({name:req.params.name});
-
-});
+// Define the user controller
+app.post('/api/user/signup',userController.signup);
+app.post('/api/user/signin',userController.signin);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
