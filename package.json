@@ -9,7 +9,7 @@
     "mongoose": "^5.0.0"
   },
   "scripts": {
-    "start": "node server/server.js --production",
+    "start": "NODE_ENV=production node server/server.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   }
 }
