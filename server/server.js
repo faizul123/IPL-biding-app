@@ -4,7 +4,8 @@ const body_parser = require('body-parser');
 const connection = require('./connection');
 const userController = require('./controller/UserController');
 const app = express();
-
+var absPath = path.resolve(__dirname,'../client/build/index.html');
+console.log(absPath);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -19,7 +20,7 @@ app.post('/api/user/signin',userController.signin);
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../client/build/index.html'));
+  res.sendFile(path.resolve(absPath));
 });
 
 const port = process.env.PORT || 5000;
