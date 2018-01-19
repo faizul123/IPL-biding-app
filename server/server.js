@@ -5,9 +5,11 @@ const connection = require('./connection');
 const userController = require('./controller/UserController');
 const app = express();
 var absPath = path.resolve(__dirname,'../client/build/index.html');
+var staticPath = path.resolve(__dirname, '../client/build');
 console.log(absPath);
+console.log(staticPath);
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(staticPath));
 
 //set the body parser
 app.use(body_parser.urlencoded({extended:true}));
