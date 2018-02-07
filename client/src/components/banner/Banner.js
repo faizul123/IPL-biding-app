@@ -29,7 +29,7 @@ class Banner extends Component {
 			
 			<div className="col-md-4">
 				
-				{this.props.route.page == "login" ? <Login /> : <Signup />}
+				{this.props.page == "login" ? <Login /> : <Signup />}
 				
 			</div>
 		</div>

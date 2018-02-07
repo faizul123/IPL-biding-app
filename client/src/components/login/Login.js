@@ -7,7 +7,10 @@ class Login extends Component {
  	constructor(props){
  		super(props);
  		this.counter = 0;
+ 		this.userName= "";
+ 		this.password = "";
  		this.handleLogin = this.handleLogin.bind(this);
+ 		this.handleChange = this.handleChange.bind(this);
  	}
  	
  	componentWillMount(){
@@ -24,9 +27,11 @@ class Login extends Component {
  	
  	handleLogin(event){
  		event.preventDefault();
- 		const username = this.state.username;
- 		const password = this.state.password;
- 		
+ 		console.log(this.username);
+	}
+ 	
+ 	handleChange(event){
+ 		this[event.target.name]= event.target.value;
  	}
  
   render() {
@@ -37,13 +42,13 @@ class Login extends Component {
          <h2 className="form-signin-heading">Please sign in</h2>
 	 <div className="form-group">
          	<label htmlFor="inputEmail" className="sr-only">Email address</label>
-	         <input type="email" id="inputEmail" className="form-control" placeholder="Email address"
-	         	onChange={(event) => this.setState({username:event.target.value}) }	          required></input>
+	         <input type="email" name="username" id="inputEmail" className="form-control" placeholder="Email address"
+	         	onChange={(event) => this.handleChange(event) }	          required></input>
 	 </div>
 	 <div className="form-group">
          <label htmlFor="inputPassword" className="sr-only">Password</label>
-         <input type="password" id="inputPassword" className="form-control" placeholder="Password"
-         	onChange={(event) => this.setState({password:event.target.value}) }	 required></input>
+         <input type="password" name="password" id="inputPassword" className="form-control" placeholder="Password"
+         	onChange={(event) => this.handleChange(event) }	 required></input>
 	 </div>
          <div className="checkbox">
           <label>
